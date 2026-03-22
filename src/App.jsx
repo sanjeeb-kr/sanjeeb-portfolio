@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
-import ParticlesBackground from './components/ParticlesBackground';
+import ConstellationBackground from './components/ConstellationBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,7 +12,6 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CommandPalette from './components/CommandPalette';
-import { ThemeProvider } from './context/ThemeContext';
 
 const Loader = () => (
     <motion.div
@@ -54,14 +53,14 @@ function App() {
     }, []);
 
     return (
-        <ThemeProvider>
+        <>
             <AnimatePresence>
                 {loading && <Loader />}
             </AnimatePresence>
 
             <div className={`min-h-screen transition-opacity duration-700 ${loading ? 'opacity-0' : 'opacity-100'}`}>
                 <ScrollProgress />
-                <ParticlesBackground />
+                <ConstellationBackground />
 
                 {/* Noise Texture Overlay */}
                 <div className="noise-bg"></div>
@@ -82,7 +81,7 @@ function App() {
                 <Footer />
                 <CommandPalette />
             </div>
-        </ThemeProvider>
+        </>
     );
 }
 

@@ -31,7 +31,7 @@ const Footer = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0 }}
                             onClick={scrollToTop}
-                            className="fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-all z-40 text-white"
+                            className="fixed bottom-8 right-8 p-3 rounded-full shadow-lg transition-all z-40 text-slate-900 dark:text-white"
                             style={{ background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))' }}
                         >
                             <ArrowUp size={24} />

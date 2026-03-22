@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, User, Code2, Briefcase, Mail, FolderGit2, Sun, Moon } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, Home, User, Code2, Briefcase, Mail, FolderGit2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { playClick, playHover } from '../utils/sounds';
-import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
     const [activeTab, setActiveTab] = useState('home');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme();
+    const [isVisible, setIsVisible] = useState(true);
+    const lastScrollY = useRef(0);
 
     const navLinks = [
-        { id: 'home', icon: Home, label: 'Home', href: '#home' },
-        { id: 'about', icon: User, label: 'About', href: '#about' },
-        { id: 'skills', icon: Code2, label: 'Skills', href: '#skills' },
-        { id: 'projects', icon: FolderGit2, label: 'Projects', href: '#projects' },
-        { id: 'experience', icon: Briefcase, label: 'Exp', href: '#experience' },
-        { id: 'contact', icon: Mail, label: 'Contact', href: '#contact' },
+        { id: 'home', icon: Home, label: 'HOME', href: '#home' },
+        { id: 'about', icon: User, label: 'ABOUT', href: '#about' },
+        { id: 'skills', icon: Code2, label: 'ARSENAL', href: '#skills' },
+        { id: 'projects', icon: FolderGit2, label: 'ARTIFACTS', href: '#projects' },
+        { id: 'experience', icon: Briefcase, label: 'JOURNEY', href: '#experience' },
+        { id: 'contact', icon: Mail, label: 'UPLINK', href: '#contact' },
     ];
 
+    // Active section tracking
     useEffect(() => {
         const handleScroll = () => {
             const sections = navLinks.map(link => document.querySelector(link.href));
@@ -28,96 +29,92 @@ const Navbar = () => {
                 }
             });
         };
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Smart hide/reveal on scroll + cursor near top
+    useEffect(() => {
+        const handleScrollVis = () => {
+            const y = window.scrollY;
+            if (y < 80) {
+                setIsVisible(true);
+            } else if (y > lastScrollY.current + 10) {
+                setIsVisible(false);
+            } else if (y < lastScrollY.current - 10) {
+                setIsVisible(true);
+            }
+            lastScrollY.current = y;
+        };
+        const handleMouse = (e) => { if (e.clientY < 80) setIsVisible(true); };
+
+        window.addEventListener('scroll', handleScrollVis, { passive: true });
+        window.addEventListener('mousemove', handleMouse, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScrollVis);
+            window.removeEventListener('mousemove', handleMouse);
+        };
     }, []);
 
     return (
         <>
-            {/* Desktop Floating Navbar */}
-            <motion.div
+            {/* ─── Desktop: Centered nav pill + fixed right toggle ─── */}
+            <motion.nav
                 initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-                className="navbar fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-center gap-1 p-2 rounded-full"
-                style={{ background: 'var(--nav-bg)', border: '1px solid var(--card-border)' }}
+                animate={{ y: isVisible ? 0 : -120, opacity: isVisible ? 1 : 0 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+                className="fixed top-5 inset-x-0 z-50 hidden md:flex justify-center pointer-events-none"
             >
-                {navLinks.map((link) => {
-                    const isActive = activeTab === link.id;
-                    return (
-                        <motion.a
-                            key={link.id}
-                            href={link.href}
-                            onClick={() => { setActiveTab(link.id); playClick(); }}
-                            onMouseEnter={() => playHover()}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="relative px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 text-sm font-medium"
-                            style={{
-                                color: isActive ? 'var(--bg-base)' : 'var(--text-muted)',
-                            }}
-                        >
-                            {isActive && (
-                                <motion.div
-                                    layoutId="active-pill"
-                                    className="absolute inset-0 rounded-full"
-                                    style={{ background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))' }}
-                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                />
-                            )}
-                            <span className="relative z-10 flex items-center gap-2">
-                                <link.icon size={16} />
-                                <span className="hidden md:inline-block">{link.label}</span>
-                            </span>
-                        </motion.a>
-                    );
-                })}
-            </motion.div>
+                {/* Nav pill — centered in the full viewport width */}
+                <div className="flex items-center gap-1 p-2 rounded-full pointer-events-auto"
+                    style={{ background: 'var(--nav-bg)', border: '1px solid var(--card-border)', backdropFilter: 'blur(16px)' }}>
+                    {navLinks.map((link) => {
+                        const isActive = activeTab === link.id;
+                        return (
+                            <motion.a
+                                key={link.id}
+                                href={link.href}
+                                onClick={() => { setActiveTab(link.id); playClick(); }}
+                                onMouseEnter={() => playHover()}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="relative px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 text-sm font-medium"
+                                style={{ color: isActive ? 'var(--bg-base)' : 'var(--text-muted)' }}
+                            >
+                                {isActive && (
+                                    <motion.div
+                                        layoutId="active-pill"
+                                        className="absolute inset-0 rounded-full"
+                                        style={{ background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))' }}
+                                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                                    />
+                                )}
+                                <span className="relative z-10 flex items-center gap-2">
+                                    <link.icon size={16} />
+                                    <span>{link.label}</span>
+                                </span>
+                            </motion.a>
+                        );
+                    })}
+                </div>
+            </motion.nav>
 
-            {/* Theme Toggle Button - Desktop floating */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="fixed top-6 right-6 md:right-10 z-50 hidden md:block"
-            >
-                <button
-                    onClick={() => { toggleTheme(); playClick(); }}
-                    onMouseEnter={() => playHover()}
-                    className="p-3 rounded-full transition-all outline-none backdrop-blur-xl"
-                    style={{
-                        background: 'var(--nav-bg)',
-                        border: '1px solid var(--card-border)',
-                        color: 'var(--accent-1)',
-                        boxShadow: 'var(--card-shadow)'
-                    }}
-                    aria-label="Toggle Theme"
-                >
-                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-            </motion.div>
 
-            {/* Mobile Top Bar */}
+
+            {/* ─── Mobile Top Bar ─── */}
             <div className="fixed top-0 left-0 w-full z-40 md:hidden flex justify-between items-center p-4 backdrop-blur-md transition-colors duration-300"
                 style={{ background: 'var(--nav-bg)', borderBottom: '1px solid var(--card-border)' }}>
                 <span className="font-bold text-xl tracking-tighter" style={{ color: 'var(--text-primary)' }}>
                     Sanjeeb<span style={{ color: 'var(--accent-1)' }}>.</span>
                 </span>
                 <div className="flex gap-4 items-center relative z-50">
-                    <button
-                        onClick={() => { toggleTheme(); playClick(); }}
-                        className="p-2 rounded-full transition-colors outline-none"
-                        style={{ color: 'var(--accent-1)' }}
-                    >
-                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                    </button>
                     <button onClick={() => setIsMobileMenuOpen(true)} style={{ color: 'var(--text-primary)' }}>
                         <Menu size={24} />
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* ─── Mobile Menu Overlay ─── */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
@@ -127,14 +124,9 @@ const Navbar = () => {
                         className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 md:hidden"
                         style={{ background: 'var(--bg-surface)' }}
                     >
-                        <button
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="absolute top-6 right-6 p-2"
-                            style={{ color: 'var(--text-muted)' }}
-                        >
+                        <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-6 right-6 p-2" style={{ color: 'var(--text-muted)' }}>
                             <X size={32} />
                         </button>
-
                         {navLinks.map((link, idx) => (
                             <motion.a
                                 key={link.id}

@@ -6,58 +6,32 @@
    CSS CUSTOM PROPERTIES — LIGHT / DARK THEME
    ============================================ */
 
-/* Light Mode (default) */
+/* Dark Mode Default ("Robotic/Cyber World") */
 :root {
-  --bg-base:        #f1f5f9;
-  --bg-surface:     #ffffff;
-  --bg-elevated:    #e2e8f0;
-  --border-color:   #cbd5e1;
-
-  --text-primary:   #0f172a;
-  --text-secondary: #334155;
-  --text-muted:     #64748b;
-
-  --accent-1:       #4f46e5;   /* indigo-600 */
-  --accent-2:       #7c3aed;   /* violet-600 */
-  --accent-glow:    rgba(79, 70, 229, 0.18);
-  --accent-glow-2:  rgba(124, 58, 237, 0.18);
-  --glow-ring:      rgba(79, 70, 229, 0.35);
-
-  --card-bg:        rgba(255, 255, 255, 0.88);
-  --card-border:    rgba(99, 102, 241, 0.22);
-  --card-shadow:    0 4px 24px rgba(79, 70, 229, 0.08), 0 1px 6px rgba(0,0,0,0.06);
-  --card-shadow-hover: 0 12px 40px rgba(79, 70, 229, 0.18), 0 4px 12px rgba(0,0,0,0.10);
-
-  --nav-bg:         rgba(255, 255, 255, 0.80);
-  --scrollbar-track:#e2e8f0;
-  --scrollbar-thumb:#94a3b8;
-}
-
-/* Dark Mode */
-.dark {
-  --bg-base:        #000000;
-  --bg-surface:     #0a0a0a;
-  --bg-elevated:    rgba(255,255,255,0.05);
-  --border-color:   rgba(255,255,255,0.10);
+  --bg-base:        #000000;   /* Pitch-black */
+  --bg-surface:     #020617;   /* Deep Navy */
+  --bg-elevated:    rgba(255, 255, 255, 0.03);
+  --border-color:   rgba(0, 243, 255, 0.15); /* Subtle cyan mesh border */
 
   --text-primary:   #ffffff;
-  --text-secondary: #d1d5db;
-  --text-muted:     #9ca3af;
+  --text-secondary: #e2e8f0;   /* Brighter Slate-200 */
+  --text-muted:     #94a3b8;   /* Brighter Slate-400 */
 
-  --accent-1:       #00f3ff;   /* cyan neon */
-  --accent-2:       #bc13fe;   /* magenta neon */
+  --accent-1:       #00f3ff;   /* Electric Cyan */
+  --accent-1-rgb:   0, 243, 255;
+  --accent-2:       #0066ff;   /* Deep Electric Blue */
   --accent-glow:    rgba(0, 243, 255, 0.15);
-  --accent-glow-2:  rgba(188, 19, 254, 0.15);
-  --glow-ring:      rgba(0, 243, 255, 0.5);
+  --accent-glow-2:  rgba(0, 102, 255, 0.15);
+  --glow-ring:      rgba(0, 243, 255, 0.4);
 
-  --card-bg:        rgba(255, 255, 255, 0.04);
-  --card-border:    rgba(255, 255, 255, 0.10);
-  --card-shadow:    none;
-  --card-shadow-hover: 0 0 30px rgba(0, 243, 255, 0.2), 0 0 60px rgba(0, 243, 255, 0.06);
+  --card-bg:        rgba(2, 6, 23, 0.6); /* Semi-transparent Deep Navy for glassmorphism */
+  --card-border:    rgba(0, 243, 255, 0.2); /* Glowing cyan border */
+  --card-shadow:    0 0 15px rgba(0, 243, 255, 0.05); /* Baseline glow */
+  --card-shadow-hover: 0 0 25px rgba(0, 243, 255, 0.3), 0 0 45px rgba(0, 102, 255, 0.2); /* Dynamic glowing effect */
 
-  --nav-bg:         rgba(0,0,0,0.80);
-  --scrollbar-track:#0a0a0a;
-  --scrollbar-thumb:#334155;
+  --nav-bg:         rgba(0, 0, 0, 0.85);
+  --scrollbar-track:#020617;
+  --scrollbar-thumb:#1e293b;
 }
 
 /* ============================================
@@ -70,7 +44,20 @@
   body {
     background-color: var(--bg-base);
     color: var(--text-secondary);
-    @apply font-sans transition-colors duration-300;
+    @apply font-sans transition-colors duration-300 relative;
+  }
+
+  /* Global Background Patterns */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    /* Dark mode: Robotic/Neural Network SVG pattern */
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='2' fill='rgba(0,243,255,0.2)'/%3E%3Ccircle cx='90' cy='90' r='2.5' fill='rgba(0,243,255,0.15)'/%3E%3Ccircle cx='50' cy='70' r='1.5' fill='rgba(0,102,255,0.2)'/%3E%3Cpath d='M30,30 L50,70 L90,90' stroke='rgba(0,243,255,0.1)' stroke-width='0.5' fill='none'/%3E%3Cpath d='M50,70 L120,50' stroke='rgba(0,102,255,0.1)' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='120' cy='50' r='2' fill='rgba(0,243,255,0.1)'/%3E%3Ccircle cx='10' cy='100' r='1.5' fill='rgba(0,243,255,0.15)'/%3E%3Cpath d='M50,70 L10,100' stroke='rgba(0,243,255,0.05)' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
+    opacity: 1;
   }
 
   h1, h2, h3, h4 { color: var(--text-primary); }
@@ -136,7 +123,8 @@
   /* ─── SECTION HEADINGS ───────────────────── */
   .section-title {
     color: var(--text-primary);
-    @apply text-3xl md:text-5xl font-bold mb-6 font-heading tracking-tight;
+    @apply text-3xl md:text-5xl font-black mb-6 tracking-[0.2em] uppercase;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
   }
 
   .section-subtitle {
@@ -333,25 +321,15 @@
    THEME-SPECIFIC GLOW EFFECTS
    ============================================ */
 
-/* Dark mode — full neon glow intensity */
-.dark .theme-card:hover {
+/* Full neon glow intensity */
+.theme-card:hover {
   box-shadow: 0 0 30px rgba(0, 243, 255, 0.2), 0 0 60px rgba(0, 243, 255, 0.07), 0 0 0 1px rgba(0, 243, 255, 0.3);
 }
-.dark .skill-pill:hover {
+.skill-pill:hover {
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.5), 0 0 40px rgba(0, 243, 255, 0.2);
   color: #000;
 }
-.dark .skill-pill:hover::after { opacity: 0.9; }
-
-/* Light mode — subtle soft shadow glow */
-:root .theme-card:hover {
-  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.15), 0 4px 12px rgba(0,0,0,0.08), 0 0 0 1px rgba(79, 70, 229, 0.3);
-}
-:root .skill-pill:hover {
-  box-shadow: 0 0 20px rgba(79, 70, 229, 0.3), 0 4px 12px rgba(79, 70, 229, 0.1);
-  color: white;
-}
-:root .skill-pill:hover::after { opacity: 0.85; }
+.skill-pill:hover::after { opacity: 0.9; }
 
 /* ─── VIOLET PILL VARIANT (Soft Skills) ─────── */
 .violet-pill {
@@ -361,10 +339,6 @@
   background: linear-gradient(135deg, var(--accent-2), #a855f7) !important;
 }
 .violet-pill:hover {
-  border-color: var(--accent-2) !important;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.18) !important;
-}
-.dark .violet-pill:hover {
   box-shadow: 0 0 20px rgba(188, 19, 254, 0.5), 0 0 40px rgba(188, 19, 254, 0.2) !important;
 }
 
@@ -382,16 +356,15 @@
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-1); }
 
 /* ============================================
-   DARK MODE NEON TEXT GLOWS
+   NEON TEXT GLOWS
    ============================================ */
 
-.dark .text-glow {
+.text-glow {
   text-shadow: 0 0 10px rgba(0, 243, 255, 0.7), 0 0 20px rgba(0, 243, 255, 0.4);
 }
-.dark .text-glow-secondary {
+.text-glow-secondary {
   text-shadow: 0 0 10px rgba(188, 19, 254, 0.7), 0 0 20px rgba(188, 19, 254, 0.4);
 }
-:root .text-glow, :root .text-glow-secondary { text-shadow: none; }
 
 /* ============================================
    PARTICLE / BLOB ANIMATION
@@ -442,6 +415,20 @@
 }
 .animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
 
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
+}
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+
+@keyframes border-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-border-rotate {
+  animation: border-rotate 4s linear infinite;
+}
+
 /* ============================================
    NOISE OVERLAY
    ============================================ */
@@ -454,4 +441,74 @@
   z-index: 50;
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   SHIMMER ANIMATION
+   ============================================ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* ============================================
+   3D FLIP CARD UTILITIES
+   ============================================ */
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* CSS hover flip — triggered by parent .flip-card:hover */
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-inner {
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 2.5rem;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.mask-gradient {
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
 }

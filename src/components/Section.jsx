@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Section = ({ id, title, subtitle, children, className = "" }) => {
+const Section = ({ id, title, subtitle, icon: Icon, children, className = "" }) => {
     return (
         <section id={id} className={`py-24 lg:py-32 relative overflow-hidden ${className}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -11,17 +11,40 @@ const Section = ({ id, title, subtitle, children, className = "" }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6 }}
-                        className="mb-16 md:mb-24 text-center max-w-3xl mx-auto"
+                        className="mb-8 md:mb-12 text-center max-w-3xl mx-auto"
                     >
                         {title && (
-                            <h2 className="section-title accent-underline">
-                                {title}
-                            </h2>
+                            <div className="relative inline-block mb-4">
+                                <div className="flex items-center justify-center gap-3 mb-2">
+                                    {Icon && <Icon className="text-[var(--accent-1)] w-8 h-8 md:w-10 md:h-10" />}
+                                    <h2 className="section-title mb-0">
+                                        {title}
+                                    </h2>
+                                </div>
+                                <motion.div 
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: "80px" }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, delay: 0.5, ease: "circOut" }}
+                                    className="h-1 bg-gradient-to-r from-[var(--accent-1)] to-[var(--accent-2)] rounded-full mx-auto mt-2 relative"
+                                >
+                                    <motion.div 
+                                        animate={{ opacity: [0.4, 1, 0.4] }}
+                                        transition={{ duration: 2, repeat: Infinity }}
+                                        className="absolute -right-1 -top-1 w-3 h-3 bg-[var(--accent-1)] rounded-full blur-[2px]"
+                                    />
+                                </motion.div>
+                            </div>
                         )}
                         {subtitle && (
-                            <p className="section-subtitle mt-4">
+                            <motion.p 
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                                className="section-subtitle mt-4"
+                            >
                                 {subtitle}
-                            </p>
+                            </motion.p>
                         )}
                     </motion.div>
                 )}

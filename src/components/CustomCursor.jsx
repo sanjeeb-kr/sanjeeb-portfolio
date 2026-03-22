@@ -80,7 +80,7 @@ const CustomCursor = () => {
                 animate={{
                     scale: isHovered ? 2.5 : 1,
                     opacity: isHovered ? 0.5 : 1,
-                    backgroundColor: isHovered ? 'rgba(0, 243, 255, 0.1)' : 'transparent',
+                    backgroundColor: isHovered ? 'rgba(var(--accent-1-rgb), 0.1)' : 'transparent',
                 }}
                 transition={{ duration: 0.2 }}
             />
