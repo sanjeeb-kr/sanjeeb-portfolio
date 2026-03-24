@@ -41,12 +41,12 @@ export const portfolioData = {
     },
     about: [
         {
-            title: "Tech Enthusiast at Heart",
-            content: "Hi there! I'm Sanjeeb, a B.Tech CSE student at Lovely Professional University. I’ve always been fascinated by how data can tell a story. While others see spreadsheets and raw numbers, I see patterns, insights, and solutions just waiting to be uncovered."
+            title: "Who I Am",
+            content: "Hey, I'm Sanjeeb. I'm a B.Tech CSE undergrad who spends way too much time staring at screens, trying to make sense of massive datasets. Where most people see a headache of numbers and spreadsheets, I just see answers hiding in plain sight."
         },
         {
-            title: "Data & ML Problem Solver",
-            content: "I specialize in turning messy data into clean, actionable intelligence. Whether I'm building a machine learning model to predict prices or designing a sleek dashboard to visualize analytics, I absolutely love the thrill of creating things that actually make a difference."
+            title: "What I Actually Do",
+            content: "My goal is simple: I build things that make data useful. I spend most of my time working right between machine learning and business intelligence. Whether I'm training an ML model to predict market prices or designing a clean dashboard so people can actually understand their metrics, I just love turning chaos into clarity."
         }
     ],
     skills: {
@@ -62,7 +62,7 @@ export const portfolioData = {
             { name: "Data Analysis", image: "https://cdn-icons-png.flaticon.com/512/4249/4249114.png" },
             { name: "Machine Learning", image: "https://cdn-icons-png.flaticon.com/512/2103/2103446.png" }
         ],
-        "Libraries/Frameworks": [
+        "Libraries / Frameworks": [
             { name: "NumPy", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
             { name: "Pandas", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
             { name: "Matplotlib", image: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" },
@@ -191,7 +191,7 @@ export const portfolioData = {
                 "Gained practical experience in end-to-end NLP workflows",
                 "Developed extractive summarization system for efficient text analysis"
             ],
-            techStack: ["Python", "NLTK", "Spacy", "Machine Learning"],
+            techStack: ["Python", "NLTK", "Spacy", "Scikit-learn"],
             projectDetails: "Completed a comprehensive extractive summarization project analyzing large text corpora, applying tokenization, stemming, TF-IDF scoring, and sentence ranking to extract the most relevant information.",
             link: "https://drive.google.com/file/d/1jb987ELmsARFMy16hGmV6j6TYQjXqZbp/view"
         }
@@ -202,9 +202,9 @@ export const portfolioData = {
             org: "Hack Quest - CTF Challenge",
             date: "Apr 2024",
             icon: "Shield",
-            highlight: "Secured digital assets in a high-stakes 24-hour competitive environment.",
-            desc: "Immersed in a 24-hour intensive CTF challenge, solving complex security puzzles across web, pwn, and crypto categories.",
-            skills: ["Cybersecurity", "CTF", "Pwn"],
+            highlight: "Competed in a 24-hour Capture The Flag (CTF) cybersecurity challenge under Concoction 2024",
+            desc: "Enhanced problem-solving skills through real-world security challenges and competitive",
+            skills: ["Cybersecurity", "Cryptography Tools", "Web Exploitation"],
             link: "https://drive.google.com/file/d/1SEhPEd5MoVmDHo7d5wtekrBue548eh8j/view?usp=drive_link"
         },
         {
@@ -212,19 +212,19 @@ export const portfolioData = {
             org: "CyberSleuth Ethical Hacking",
             date: "Sep 2023",
             icon: "ShieldCheck",
-            highlight: "Mastered fundamental hacking concepts and penetration testing techniques.",
-            desc: "Engaged in hands-on labs focused on ethical hacking, covering reconnaissance, scanning, and vulnerability analysis.",
-            skills: ["Ethical Hacking", "InfoSec", "Pentesting"],
+            highlight: "Participated in a hands-on workshop on ethical hacking concepts organized at LPU",
+            desc: "Gained practical exposure to cybersecurity fundamentals and ethical hacking techniques",
+            skills: ["Ethical Hacking", "Networking Basics", "Vulnerability Analysis"],
             link: "https://drive.google.com/file/d/1YVUQZgF394GF-B5LlyHWm3JH6wSyYy9X/view?usp=drive_link"
         },
         {
-            role: "Awareness Coordinator",
+            role: "Community Development Programme",
             org: "Mukta Foundation",
             date: "Jun 2024 – Jul 2024",
             icon: "Users",
-            highlight: "Led community-focused initiatives to drive social impact and awareness.",
-            desc: "Coordinated large-scale awareness drives and volunteer efforts, managing over 20+ members to achieve community goals.",
-            skills: ["Leadership", "Management", "Social Advocacy"],
+            highlight: "Participated in an environmental awareness and plantation initiative, addressing deforestation and pollution",
+            desc: "Planted 100+ saplings with ~80% survival and improved environmental awareness among students",
+            skills: ["Project Planning", "Stakeholder Coordination", "Sustainability Practices"],
             link: "https://drive.google.com/file/d/1M5y_uBbbZ2o9vHDFqsmJsl36oVZwTWiP/view?usp=sharing"
         }
     ]

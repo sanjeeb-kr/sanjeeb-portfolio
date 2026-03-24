@@ -903,7 +903,7 @@ const Activities3DGrid = ({ extracurricular }) => {
                                         }}
                                     >
                                         {/* ── Ultra-Premium Border (4px) ── */}
-                                        <div className="absolute inset-0 opacity-0 group-hover/flip:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
+                                        <div className="absolute inset-0 opacity-40 group-hover/flip:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
                                             <div className="absolute inset-[-50%] animate-border-rotate blur-3xl opacity-60" 
                                                 style={{ background: 'conic-gradient(from 0deg, transparent 0%, var(--accent-1) 50%, transparent 100%)' }} />
                                             <div className="absolute inset-[-150%] animate-border-rotate" 
@@ -976,13 +976,25 @@ const Activities3DGrid = ({ extracurricular }) => {
                                     </div>
 
                                     {/* ── BACK (Ultra-Premium) ── */}
-                                    <div className="flip-back p-12 flex flex-col justify-between overflow-hidden rounded-[2.5rem]"
+                                    <div className="flip-back p-12 flex flex-col justify-between overflow-hidden rounded-[2.5rem] relative"
                                         style={{ 
                                             background: `radial-gradient(circle at center, rgba(var(--accent-1-rgb), 0.15) 0%, rgba(2, 6, 23, 0.95) 100%)`, 
                                             border: '1px solid rgba(var(--accent-1-rgb),0.5)', 
                                             boxShadow: '0 0 60px rgba(var(--accent-1-rgb),0.2), inset 0 0 40px rgba(var(--accent-1-rgb),0.1), 0 30px 60px -20px var(--card-bg)' 
                                         }}
                                     >
+                                        {/* ── Ultra-Premium Border (4px) ── */}
+                                        <div className="absolute inset-0 opacity-40 group-hover/flip:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
+                                            <div className="absolute inset-[-50%] animate-border-rotate blur-3xl opacity-60" 
+                                                style={{ background: 'conic-gradient(from 0deg, transparent 0%, var(--accent-1) 50%, transparent 100%)' }} />
+                                            <div className="absolute inset-[-150%] animate-border-rotate" 
+                                                style={{ background: 'conic-gradient(from 0deg, transparent 0%, transparent 40%, var(--accent-1) 70%, #fff 100%)' }} />
+                                            <div className="absolute inset-[3px] bg-[#020617] rounded-[2.3rem]" />
+                                        </div>
+
+                                        {/* Technical Corner Brackets */}
+                                        <div className="absolute top-6 left-6 w-8 h-8 border-t-2 border-l-2 border-white/10 rounded-tl-xl z-20 group-hover/flip:border-[var(--accent-1)]/40 transition-all duration-500 pointer-events-none" />
+                                        <div className="absolute bottom-6 right-6 w-8 h-8 border-b-2 border-r-2 border-white/10 rounded-br-xl z-20 group-hover/flip:border-[var(--accent-1)]/40 transition-all duration-500 pointer-events-none" />
                                         {/* Encryption Grid Pattern */}
                                         <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                                             style={{ backgroundImage: 'radial-gradient(var(--accent-1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}
