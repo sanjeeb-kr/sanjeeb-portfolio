@@ -227,5 +227,23 @@ export const portfolioData = {
             skills: ["Project Planning", "Stakeholder Coordination", "Sustainability Practices"],
             link: "https://drive.google.com/file/d/1M5y_uBbbZ2o9vHDFqsmJsl36oVZwTWiP/view?usp=sharing"
         }
-    ]
+    ],
+    problemSolving: {
+        leetcode: {
+            url: "https://leetcode.com/u/sanjeeb_18/",
+            solved: "75+",
+            easy: 35,
+            medium: 38,
+            hard: 2
+        },
+        hackerrank: {
+            url: "https://www.hackerrank.com/profile/sanjeebsk_160204",
+            stars: 5,
+            languages: [
+                { name: "Python", stars: 5 },
+                { name: "C++", stars: 5 },
+                { name: "C", stars: 3 }
+            ]
+        }
+    }
 };
