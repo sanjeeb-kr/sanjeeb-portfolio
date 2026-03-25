@@ -94,7 +94,7 @@ const EducationPath = ({ education }) => {
                                         <div className={`absolute inset-[-50%] ${idx === 0 ? 'animate-border-rotate' : ''} bg-[conic-gradient(from_0deg,transparent_0%,var(--accent-1)_50%,transparent_100%)] blur-3xl`}
                                             style={{ opacity: idx === 0 ? 0.9 : 0.6 }}
                                         />
-                                        <div className={`absolute inset-[-150%] ${idx === 0 ? 'animate-border-rotate' : ''} bg-[conic-gradient(from_0deg,transparent_0%,transparent_40%,var(--accent-1)_70%,#fff_100%)]`} 
+                                        <div className={`absolute inset-[-150%] ${idx === 0 ? 'animate-border-rotate' : ''} bg-[conic-gradient(from_0deg,transparent_0%,transparent_40%,var(--accent-1)_70%,#fff_100%)]`}
                                             style={{ opacity: idx === 0 ? 1 : 0.5 }}
                                         />
                                         <div className="absolute inset-[4px] bg-var-bg-surface rounded-[1.8rem]" style={{ background: 'var(--bg-surface)' }} />
@@ -255,8 +255,8 @@ const TrainingCard = ({ training }) => {
                             <div
                                 className="relative rounded-[2.5rem] backdrop-blur-[100px] overflow-hidden flex flex-col md:flex-row z-10 border border-white/10 transition-all duration-500"
                                 style={{
-                                    background: isHovered 
-                                        ? `radial-gradient(circle at left, ${c1}15 0%, rgba(2, 6, 23, 0.95) 100%)` 
+                                    background: isHovered
+                                        ? `radial-gradient(circle at left, ${c1}15 0%, rgba(2, 6, 23, 0.95) 100%)`
                                         : 'rgba(2, 6, 23, 0.85)',
                                     borderColor: isHovered ? `${c1}88` : 'rgba(255,255,255,0.05)',
                                     boxShadow: isHovered ? `0 40px 100px -20px ${c1}44, inset 0 0 30px ${c1}22` : '0 10px 40px rgba(0,0,0,0.5)',
@@ -721,7 +721,7 @@ const OrbitalNode = ({ cert, idx, accent }) => {
                     className="relative w-64 h-64 flex items-center justify-center transform-gpu preserve-3d"
                 >
                     {/* Inner Glowing Core with 4px Animated Border */}
-                    <div 
+                    <div
                         className="absolute w-44 h-44 rounded-full flex items-center justify-center z-10 overflow-hidden shadow-2xl transition-shadow duration-500"
                         style={{ boxShadow: isHovered ? `0 0 50px ${accent}66, inset 0 0 20px ${accent}33` : `0 0 30px rgba(0,0,0,0.8), inset 0 0 10px ${accent}22` }}
                     >
@@ -897,16 +897,16 @@ const Activities3DGrid = ({ extracurricular }) => {
 
                                     {/* ── FRONT (Ultra-Premium) ── */}
                                     <div className="flip-front backdrop-blur-3xl p-12 flex flex-col items-center justify-center gap-10 shadow-2xl overflow-hidden rounded-[2.5rem] border border-white/5"
-                                        style={{ 
+                                        style={{
                                             background: `radial-gradient(circle at top left, rgba(var(--accent-1-rgb), 0.08) 0%, rgba(2, 6, 23, 0.85) 100%)`,
-                                            boxShadow: '0 30px 60px -12px var(--card-bg), inset 0 0 20px rgba(255,255,255,0.02)' 
+                                            boxShadow: '0 30px 60px -12px var(--card-bg), inset 0 0 20px rgba(255,255,255,0.02)'
                                         }}
                                     >
                                         {/* ── Ultra-Premium Border (4px) ── */}
                                         <div className="absolute inset-0 opacity-40 group-hover/flip:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
-                                            <div className="absolute inset-[-50%] animate-border-rotate blur-3xl opacity-60" 
+                                            <div className="absolute inset-[-50%] animate-border-rotate blur-3xl opacity-60"
                                                 style={{ background: 'conic-gradient(from 0deg, transparent 0%, var(--accent-1) 50%, transparent 100%)' }} />
-                                            <div className="absolute inset-[-150%] animate-border-rotate" 
+                                            <div className="absolute inset-[-150%] animate-border-rotate"
                                                 style={{ background: 'conic-gradient(from 0deg, transparent 0%, transparent 40%, var(--accent-1) 70%, #fff 100%)' }} />
                                             <div className="absolute inset-[3px] bg-[#020617] rounded-[2.3rem]" />
                                         </div>
@@ -914,14 +914,6 @@ const Activities3DGrid = ({ extracurricular }) => {
                                         {/* Technical Corner Brackets */}
                                         <div className="absolute top-6 left-6 w-8 h-8 border-t-2 border-l-2 border-white/10 rounded-tl-xl z-20 group-hover/flip:border-[var(--accent-1)]/40 transition-all duration-500 pointer-events-none" />
                                         <div className="absolute bottom-6 right-6 w-8 h-8 border-b-2 border-r-2 border-white/10 rounded-br-xl z-20 group-hover/flip:border-[var(--accent-1)]/40 transition-all duration-500 pointer-events-none" />
-
-                                        {/* Mission Status Indicator */}
-                                        <div className="absolute top-6 right-8 z-30 flex items-center gap-2">
-                                            <span className="text-[8px] font-black text-slate-900 dark:text-white/20 tracking-[0.3em] uppercase group-hover/flip:text-[var(--accent-1)]/60 transition-colors">
-                                                Mission: Active
-                                            </span>
-                                            <div className="w-2 h-2 rounded-full bg-[var(--accent-1)] shadow-[0_0_12px_var(--accent-1)] animate-pulse" />
-                                        </div>
 
                                         {/* Scanline Effect */}
                                         <div className="absolute inset-x-0 h-[1px] bg-white/5 top-0 animate-scanline pointer-events-none z-10" />
@@ -977,17 +969,17 @@ const Activities3DGrid = ({ extracurricular }) => {
 
                                     {/* ── BACK (Ultra-Premium) ── */}
                                     <div className="flip-back p-12 flex flex-col justify-between overflow-hidden rounded-[2.5rem] relative"
-                                        style={{ 
-                                            background: `radial-gradient(circle at center, rgba(var(--accent-1-rgb), 0.15) 0%, rgba(2, 6, 23, 0.95) 100%)`, 
-                                            border: '1px solid rgba(var(--accent-1-rgb),0.5)', 
-                                            boxShadow: '0 0 60px rgba(var(--accent-1-rgb),0.2), inset 0 0 40px rgba(var(--accent-1-rgb),0.1), 0 30px 60px -20px var(--card-bg)' 
+                                        style={{
+                                            background: `radial-gradient(circle at center, rgba(var(--accent-1-rgb), 0.15) 0%, rgba(2, 6, 23, 0.95) 100%)`,
+                                            border: '1px solid rgba(var(--accent-1-rgb),0.5)',
+                                            boxShadow: '0 0 60px rgba(var(--accent-1-rgb),0.2), inset 0 0 40px rgba(var(--accent-1-rgb),0.1), 0 30px 60px -20px var(--card-bg)'
                                         }}
                                     >
                                         {/* ── Ultra-Premium Border (4px) ── */}
                                         <div className="absolute inset-0 opacity-40 group-hover/flip:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
-                                            <div className="absolute inset-[-50%] animate-border-rotate blur-3xl opacity-60" 
+                                            <div className="absolute inset-[-50%] animate-border-rotate blur-3xl opacity-60"
                                                 style={{ background: 'conic-gradient(from 0deg, transparent 0%, var(--accent-1) 50%, transparent 100%)' }} />
-                                            <div className="absolute inset-[-150%] animate-border-rotate" 
+                                            <div className="absolute inset-[-150%] animate-border-rotate"
                                                 style={{ background: 'conic-gradient(from 0deg, transparent 0%, transparent 40%, var(--accent-1) 70%, #fff 100%)' }} />
                                             <div className="absolute inset-[3px] bg-[#020617] rounded-[2.3rem]" />
                                         </div>
